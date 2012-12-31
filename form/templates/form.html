@@ -1,4 +1,4 @@
-<form method="POST" action="{{ url_for('show_form') }}">
+<form method="POST" action="{{ request.scheme }}://{{ request.host }}{{ url_for('show_form') }}">
 {% if form.errors %}
 <ul class="errors">
     {% for field_name, field_errors in form.errors|dictsort if field_errors %}
