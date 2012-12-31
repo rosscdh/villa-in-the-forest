@@ -8,6 +8,8 @@ Author: Ross Crawford-d'Heureuse
 
 _Private Sale Villa (owner seller)_
 
+<div id="map_canvas" style="width:512px;height:480px"></div>
+
 Das im Sommer 1995 fertiggestellte Anwesen einer Architekten-Familie liegt im Landschaftsschutzgebiet "Hardter Wald" von Mönchengladbach, in Nachbarschaft zu weiteren bis zu 15.000 qm großen Grundstücken.
 
 Mönchengladbach-Hardt verfügt über eine vollständige Infrastruktur mit hohem Freizeitwert und ausgezeichneten Verkehrsanbindungen über Autobahnen zu den Städten Düsseldorf, Köln, Krefeld und Roermond.
@@ -57,15 +59,35 @@ Die vielfältigen Details der Einbauten (Türen / Waschtische / Treppenanlage et
 </tr>
 </table>
 
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBhGjmo_89lYuLL3pQAvGWAc4bhS3GVBE0&sensor=false"></script>
+<script>
+var map;
+function initialize() {
+  var mapOptions = {
+    zoom: 18,
+    //center: new google.maps.LatLng(-34.397, 150.644),
+    mapTypeId: google.maps.MapTypeId.SATELLITE
+  };
+
+	map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+  	geocoder = new google.maps.Geocoder();
+	geocoder.geocode( { 'address': 'Ungermannsweg 3, Monchengladbach NRW Germany'}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        //In this case it creates a marker, but you can get the lat and lng from the location.LatLng
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map, 
+            position: results[0].geometry.location
+        });
+      }
+  	});
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
 
 <link rel="stylesheet" type="text/css" href="/static/js/Elastislide/css/elastislide.css" />
-<style>
-ul#gallery{
-	width:100%;
-	margin:0px;
-}
-</style>
-
 <script type="text/javascript" src="/static/js/Elastislide/js/jquerypp.custom.js"></script>
 <script type="text/javascript" src="/static/js/Elastislide/js/jquery.elastislide.js"></script>
 

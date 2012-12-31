@@ -8,6 +8,8 @@ Author: Ross Crawford-d'Heureuse
 
 _Private Sale Villa (owner seller)_
 
+<div id="map_canvas" style="width:512px;height:480px"></div>
+
 The villa is the property of an Architect's family, completed in the summer of 1995 and situated in a registered conservation area known as the "Hardter Wald" found near the city of Mönchengladbach. The villa is surrounded by private residential plots with an average size of around 15,000 sqm; thus allowing for a peaceful and private lifestyle.
 
 ![Exterior view](/static/images/garden-3.jpg "View from Entrance")
@@ -39,9 +41,7 @@ In addition to this each detail of the house has been personally selected and pl
 As per the "*German Energy Efficiency Certificate*" (ENEV 2008), the house is rated as an "**11 litre house**".
 
 
-
-# Property Datasheet #
-
+## Property Datasheet ##
 <table>
 <tr><td>Basement</td><td> ca.</td><td>27 sqm</td></tr>
 <tr><td>Ground floor</td><td>ca.</td><td>252 sqm</td></tr>
@@ -51,8 +51,8 @@ As per the "*German Energy Efficiency Certificate*" (ENEV 2008), the house is ra
 
 ![The Villa in the forest](/static/images/welcome.jpg "The Villa in the forest")
 
-# Asking price #
 
+## Asking price ##
 <table>
 <tr>
 <td>€ (Euro)</td><td>1,950,000</td>
@@ -60,14 +60,35 @@ As per the "*German Energy Efficiency Certificate*" (ENEV 2008), the house is ra
 </table>
 
 
-<link rel="stylesheet" type="text/css" href="/static/js/Elastislide/css/elastislide.css" />
-<style>
-ul#gallery{
-	width:100%;
-	margin:0px;
-}
-</style>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBhGjmo_89lYuLL3pQAvGWAc4bhS3GVBE0&sensor=false"></script>
+<script>
+var map;
+function initialize() {
+  var mapOptions = {
+    zoom: 18,
+    //center: new google.maps.LatLng(-34.397, 150.644),
+    mapTypeId: google.maps.MapTypeId.SATELLITE
+  };
 
+	map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+  	geocoder = new google.maps.Geocoder();
+	geocoder.geocode( { 'address': 'Ungermannsweg 3, Monchengladbach NRW Germany'}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        //In this case it creates a marker, but you can get the lat and lng from the location.LatLng
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map, 
+            position: results[0].geometry.location
+        });
+      }
+  	});
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+
+<link rel="stylesheet" type="text/css" href="/static/js/Elastislide/css/elastislide.css" />
 <script type="text/javascript" src="/static/js/Elastislide/js/jquerypp.custom.js"></script>
 <script type="text/javascript" src="/static/js/Elastislide/js/jquery.elastislide.js"></script>
 
