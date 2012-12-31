@@ -8,9 +8,9 @@ Author: Ross Crawford-d'Heureuse
 
 _Private Sale Villa (owner seller)_
 
-<div id="map_canvas" style="width:512px;height:480px"></div>
-
 Das im Sommer 1995 fertiggestellte Anwesen einer Architekten-Familie liegt im Landschaftsschutzgebiet "Hardter Wald" von Mönchengladbach, in Nachbarschaft zu weiteren bis zu 15.000 qm großen Grundstücken.
+
+<div id="map_canvas" style="width:512px;height:480px"></div>
 
 Mönchengladbach-Hardt verfügt über eine vollständige Infrastruktur mit hohem Freizeitwert und ausgezeichneten Verkehrsanbindungen über Autobahnen zu den Städten Düsseldorf, Köln, Krefeld und Roermond.
 

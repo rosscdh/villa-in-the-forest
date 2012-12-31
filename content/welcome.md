@@ -8,13 +8,13 @@ Author: Ross Crawford-d'Heureuse
 
 _Private Sale Villa (owner seller)_
 
-<div id="map_canvas" style="width:512px;height:480px"></div>
-
 The villa is the property of an Architect's family, completed in the summer of 1995 and situated in a registered conservation area known as the "Hardter Wald" found near the city of Mönchengladbach. The villa is surrounded by private residential plots with an average size of around 15,000 sqm; thus allowing for a peaceful and private lifestyle.
 
-![Exterior view](/static/images/garden-3.jpg "View from Entrance")
+<div id="map_canvas" style="width:512px;height:480px"></div>
 
 Mönchengladbach-Hardt while being a small town has a high-standard of recreation and international level sports facilities, infrastructure and shopping communities to ensure a comfortable lifestyle. This as well as excellent access to highways leading into the cities of Düsseldorf, Köln (Cologne), Krefeld and Roermond (Netherlands) ensures that you are never too far away from the excitement of a big city.
+
+![Exterior view](/static/images/garden-3.jpg "View from Entrance")
 
 Planned and developed as a park-like garden by a landscape architect; the grounds are deliberately surrounded by old-growth trees ensuring the the main house is almost totally hidden from the road.
 
