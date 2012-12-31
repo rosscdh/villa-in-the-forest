@@ -1,4 +1,5 @@
 pelican-themes
+output
 *.pid
 *.pyc
 .AppleDouble

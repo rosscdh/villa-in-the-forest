@@ -2,21 +2,31 @@
 # -*- coding: utf-8 -*- #
 
 AUTHOR = u"Ross Crawford'dHeureuse"
-SITENAME = u'Villa in the forest'
-SITEURL = ''
+SITENAME = u'The Villa in the forest'
+SITEURL = 'http://localhost:8000'
 
-TIMEZONE = 'Europe/Paris'
+TIMEZONE = 'Europe/Berlin'
 
 DEFAULT_LANG = u'en'
+ARTICLE_LANG_URL = '{lang}/{slug}.html'
+ARTICLE_LANG_SAVE_AS = '{lang}/{slug}.html'
 
 # Blogroll
-LINKS =  (('Pelican', 'http://docs.notmyidea.org/alexis/pelican/'),
-          ('Python.org', 'http://python.org'),
-          ('Jinja2', 'http://jinja.pocoo.org'),
-          ('You can modify those links in your config file', '#'),)
+MENUITEMS =  (
+	('Home', '/'),
+)
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = ()
+
+# Extra pages
+DISPLAY_PAGES_ON_MENU = True
+
+STATIC_PATHS = ['images', 'js',]
 
 DEFAULT_PAGINATION = 10
+
+TYPOGRIFY = True
+
+#THEME = 'pelican-themes/iris'
+THEME = 'theme/iris'
