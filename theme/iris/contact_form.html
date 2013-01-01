@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }}{%endblock%}
+{% block content %}
+    <h2>{{ page.title }}</h2>
+    <div class="content">
+    {{ page.content }}
+    </div>
+    <div id="form"></div>
+
+<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" type="text/css" />
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $.ajax({
+    url: "{{FORM_SERVER}}"
+  })
+  .success(function(data, textStatus, jqXHR) { 
+    $('#form').html(data);
+  })
+  .error(function(data, textStatus, jqXHR) { 
+    $('#form').html('Could not load form');
+  });
+
+
+  $('[type=submit]').live('click', function(event){
+    event.preventDefault();
+
+    var self = this;
+    var form = $(this).closest('form');
+    self.w = form.width();
+    self.h = form.height();
+    self.form_style = 'width:'+ self.w +'px;';
+    self.the_form = form;
+
+    var extra_data = {
+    };
+
+    self.placement_id = extra_data.placement_id;
+    self.data = $.param(extra_data) +'&'+ form.serialize();
+
+    $.ajax({
+        type: 'POST',
+        url: form.attr('action'),
+        crossDomain: true,
+        data: self.data
+    })
+    .success(function(data, textStatus, jqXHR) {
+        data.css_class = 'success';
+        console.log(data)
+        form
+          .hide()
+          .html($('<ul>', {'id': 'lp-messages', 'style': self.form_style, 'class':'messagelist'}).append($('<li>', {'html': data.message, 'class': data.css_class})))
+          .fadeIn();
+    })
+    .error(function(jqXHR, textStatus, errorThrown) {
+        $('.error-message').remove();
+        var data = $.parseJSON(jqXHR.responseText);
+
+        $.each(data, function(name,item){
+          $('[name='+ name +']').before($('<div/>', {'html': item, 'class': 'error-message'}));
+        });
+    })
+    .complete(function() {
+    });
+  });
+
+});
+</script>
+{% endblock %}
